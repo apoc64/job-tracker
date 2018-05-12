@@ -34,7 +34,8 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} updated!"
       redirect_to company_path(@company)
     else
-      render :edit
+      flash[:notice] = "Campany name cannot be blank"
+      redirect_to edit_company_path(@company)
     end
   end
 
