@@ -13,7 +13,8 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
     else
-      render :new
+      flash[:notice] = "You must enter a name for your company"
+      redirect_to new_company_path
     end
   end
 
