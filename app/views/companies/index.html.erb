@@ -3,9 +3,11 @@
 <ul>
   <% @companies.each do |company| %>
   <li class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %>: 
+    <%= link_to company.name, company_path(company) %>:
     <%= link_to "Edit", edit_company_path(company) %>
     <%= link_to "Delete", company_path(company), method: "delete" %>
   </li>
   <% end %>
 </ul>
+
+<a href="<%= new_company_path %>">Create New Company</a>

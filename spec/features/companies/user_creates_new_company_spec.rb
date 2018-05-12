@@ -11,4 +11,12 @@ describe "User creates a new company" do
     expect(page).to have_content("ESPN")
     expect(Company.count).to eq(1)
   end
+
+  scenario 'a user can navigate to the new company page' do
+    visit companies_path
+
+    click_link "Create New Company"
+
+    expect(current_path).to eq(new_company_path)
+  end
 end
