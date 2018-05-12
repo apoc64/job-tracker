@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/apoc64/job-tracker.svg?columns=all)](https://waffle.io/apoc64/job-tracker)
 # Job Tracker
 
 ## Learning Goals
