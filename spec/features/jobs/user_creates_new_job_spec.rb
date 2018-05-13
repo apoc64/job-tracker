@@ -29,7 +29,7 @@ describe 'User creates a new job' do
     fill_in 'job[description]',       with: description
     fill_in 'job[level_of_interest]', with: level_of_interest
     fill_in 'job[city]',              with: city
-    fill_in 'job[category]',           with: category
+    fill_in 'job[category]',          with: category
 
     click_button 'Create'
 
@@ -47,7 +47,7 @@ describe 'User creates a new job' do
     error     = 'Enter information into all fields before submitting!'
     name      = 'ESPN'
     company   = Company.create!(name: name)
-    category  = Category.create!(title: title)
+    category  = Category.create!(title: 'Development')
 
 
     visit new_company_job_path(company)
