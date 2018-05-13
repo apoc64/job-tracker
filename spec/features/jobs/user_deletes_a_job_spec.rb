@@ -4,9 +4,12 @@ require 'rails_helper'
 describe 'User deletes existing job' do
   scenario 'when clicking delete link for a job on jobs index page' do
     company = Company.create(name: 'ESPN')
+    category = Category.create!(title: 'Development')
+
     job     = company.jobs.create!(title: 'Developer',
                                    level_of_interest: 70,
-                                   city: 'Denver')
+                                   city: 'Denver',
+                                   category: category)
     visit company_jobs_path(company)
 
     within(".job_#{job.id}") do
@@ -20,9 +23,11 @@ describe 'User deletes existing job' do
   scenario 'when clicking delete link for a job on job show page' do
 
     company = Company.create(name: 'ESPN')
+    category          = Category.create!(title: 'Development')
     job     = company.jobs.create!(title: 'Developer',
                                    level_of_interest: 70,
-                                   city: 'Denver')
+                                   city: 'Denver',
+                                   category: category)
     visit company_job_path(company, job)
 
     click_link 'Delete'

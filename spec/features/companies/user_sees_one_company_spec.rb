@@ -2,10 +2,12 @@ require 'rails_helper'
 
 describe 'when visiting a companys\' jobs index page' do
   scenario 'a user sees company name and job title' do
+    category = Category.create!(title: 'Development')
     company = Company.create!(name: 'ESPN')
     job = company.jobs.create!(title: 'Developer',
                                level_of_interest: 90,
-                               city: 'Denver')
+                               city: 'Denver',
+                               category: category)
 
     visit company_path(company)
 
