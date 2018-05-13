@@ -1,10 +1,19 @@
 require 'rails_helper'
 
 describe 'User creates a new company' do
-  scenario 'when clicking create button after filling in company name' do
+  scenario 'a user can navigate to create company page' do
+    visit companies_path
+
+    click_link 'Create New Company'
+
+    expect(current_path).to eq(new_company_path)
+  end
+
+  scenario 'when clicking create button after filling in company name form' do
+    name = 'ESPN'
+
     visit new_company_path
 
-    name = 'ESPN'
     fill_in 'company[name]', with: name
     click_button 'Create'
 
@@ -13,21 +22,14 @@ describe 'User creates a new company' do
     expect(Company.count).to eq(1)
   end
 
-  scenario 'a user can navigate to the new company page' do
-    visit companies_path
-
-    click_link 'Create New Company'
-
-    expect(current_path).to eq(new_company_path)
-  end
-
-  describe 'user cannot create a company with no name' do
+  describe 'user cannot create a company without a name' do
     scenario 'when user clicks link to create with blank company name' do
+      error = 'You must enter a name for your company!'
+
       visit new_company_path
 
       click_button 'Create'
 
-      error = 'You must enter a name for your company'
       expect(current_path).to eq(new_company_path)
       expect(page).to have_content(error)
     end

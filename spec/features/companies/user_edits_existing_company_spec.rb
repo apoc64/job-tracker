@@ -2,9 +2,10 @@ require 'rails_helper'
 
 describe 'User edits an existing company' do
   scenario 'when clicking edit link for a company' do
-    name = 'ESPN'
-    new_name =  'EA Sports'
-    company = Company.create!(name: name)
+    name     = 'ESPN'
+    new_name = 'EA Sports'
+    company  = Company.create!(name: name)
+
     visit edit_company_path(company)
 
     fill_in 'company[name]', with: new_name
@@ -16,13 +17,14 @@ describe 'User edits an existing company' do
   end
 
   scenario 'when submitting with an empty name it reloads with a message' do
+    error   = 'Company name cannot be blank!'
     company = Company.create!(name: 'ESPN2')
+
     visit edit_company_path(company)
 
     fill_in 'company[name]', with: ''
     click_button 'Update'
 
-    error = 'Company name cannot be blank'
     expect(current_path).to eq(edit_company_path(company))
     expect(page).to have_content(error)
   end

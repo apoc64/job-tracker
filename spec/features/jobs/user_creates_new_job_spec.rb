@@ -1,13 +1,24 @@
 require 'rails_helper'
 
 describe 'User creates a new job' do
-  scenario 'after filling out form fields' do
-    name = 'ESPN'
-    title = 'Developer'
-    description = 'So fun!'
-    level_of_interest = 80
-    city = 'Denver'
+  scenario 'a user can navigate to the create job page for a company' do
     company = Company.create!(name: name)
+
+    visit company_jobs_path(company)
+
+    click_link 'Create New Job'
+
+    expect(current_path).to eq(new_company_job_path(company))
+  end
+
+  scenario 'after filling out form fields' do
+    name              = 'ESPN'
+    title             = 'Developer'
+    description       = 'So fun!'
+    city              = 'Denver'
+    level_of_interest = 80
+    company           = Company.create!(name: name)
+
     visit new_company_job_path(company)
 
     fill_in 'job[title]',             with: title
@@ -28,8 +39,10 @@ describe 'User creates a new job' do
   end
 
   scenario 'when a user tries to submit an empty job form' do
-    name = 'ESPN'
+    error   = 'Enter information into all fields before submitting!'
+    name    = 'ESPN'
     company = Company.create!(name: name)
+
     visit new_company_job_path(company)
 
     fill_in 'job[title]',             with: ''
@@ -39,7 +52,6 @@ describe 'User creates a new job' do
 
     click_button 'Create'
 
-    error = 'Enter information into all form fields before submitting!'
     expect(current_path).to eq(new_company_job_path(company))
     expect(page).to have_content(error)
   end

@@ -13,7 +13,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
     else
-      flash[:notice] = 'You must enter a name for your company'
+      flash[:notice] = 'You must enter a name for your company!'
       redirect_to new_company_path
     end
   end
@@ -34,7 +34,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} updated!"
       redirect_to company_path(@company)
     else
-      flash[:notice] = 'Company name cannot be blank'
+      flash[:notice] = 'Company name cannot be blank!'
       redirect_to edit_company_path(@company)
     end
   end
