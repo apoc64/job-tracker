@@ -39,7 +39,7 @@ describe 'User creates a new job' do
 
     click_button 'Create'
 
-    error = 'You need to enter information into all form fields before submitting!'
+    error = 'Enter information into all form fields before submitting!'
     expect(current_path).to eq(new_company_job_path(company))
     expect(page).to have_content(error)
   end

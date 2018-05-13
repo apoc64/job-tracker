@@ -9,7 +9,7 @@ describe 'when visiting a companys\' jobs index page' do
 
     visit company_path(company)
 
-    expect(current_path).to eq("/companies/#{company.id}/jobs")
+    expect(current_path).to eq(company_jobs_path(Company.first.id))
     expect(page).to have_content(company.name)
     expect(page).to have_content(job.title)
   end
