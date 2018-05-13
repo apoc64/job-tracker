@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe 'User deletes existing job' do
   scenario 'when clicking delete link for a job on jobs index page' do
     company = Company.create(name: 'ESPN')
@@ -17,6 +18,7 @@ describe 'User deletes existing job' do
   end
 
   scenario 'when clicking delete link for a job on job show page' do
+
     company = Company.create(name: 'ESPN')
     job     = company.jobs.create!(title: 'Developer',
                                    level_of_interest: 70,

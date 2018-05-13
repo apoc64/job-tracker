@@ -44,5 +44,6 @@ describe Job do
                     description: 'Wahooo')
       expect(job).to respond_to(:company)
     end
+    it {should belong_to(:category)}
   end
 end
