@@ -24,13 +24,13 @@ describe 'User edits an existing job after clicking edit link for a job' do
 
     click_button 'Update'
 
-    expect(current_path).to eq(company_job_path(job))
+    expect(current_path).to eq(company_job_path(company, job))
     expect(page).to have_content(new_title)
     expect(page).to_not have_content(title)
   end
 
-  scenario 'clicks submit button with empty forms' do
-    it 'reloads page with error' do
+  describe 'user clicks submit button with empty forms' do
+    it 'should reload page with error' do
       name              = 'ESPN'
       title             = 'Developer'
       level_of_interest = 80
@@ -49,7 +49,7 @@ describe 'User edits an existing job after clicking edit link for a job' do
 
       click_button 'Update'
 
-      error = 'Fill out at least one field you would like to update!'
+      error = 'Fill out all fields before you update!'
       expect(current_path).to eq(edit_company_job_path(company, job))
       expect(page).to have_content(error)
     end
