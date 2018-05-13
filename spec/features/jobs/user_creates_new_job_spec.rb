@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'User creates a new job' do
-
   scenario 'a user can navigate to the create job page for a company' do
     name = 'ESPN'
     company = Company.create!(name: name)
@@ -14,19 +13,16 @@ describe 'User creates a new job' do
   end
 
   scenario 'after filling out form fields' do
-    name              = 'ESPN'
-    title             = 'Developer'
-    description       = 'So fun!'
-    city              = 'Denver'
-    level_of_interest = 80
-    company           = Company.create!(name: name)
+    company  = Company.create!(name: 'ESPN')
+    category = Category.create!(title: 'Technology')
 
     visit new_company_job_path(company)
 
-    fill_in 'job[title]',             with: title
-    fill_in 'job[description]',       with: description
-    fill_in 'job[level_of_interest]', with: level_of_interest
-    fill_in 'job[city]',              with: city
+    fill_in 'job[title]',             with: 'Developer'
+    fill_in 'job[description]',       with: 'So Fun!'
+    fill_in 'job[level_of_interest]', with: 80
+    fill_in 'job[city]',              with: 'Denver'
+    fill_in 'job[category]',          with: category
 
     click_button 'Create'
 

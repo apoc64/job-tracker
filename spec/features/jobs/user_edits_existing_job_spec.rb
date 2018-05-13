@@ -10,10 +10,12 @@ describe 'User edits an existing job after clicking edit link for a job' do
     new_description       = 'Not so fun!'
     new_level_of_interest = 30
     new_city              = 'New York City'
+    category              = Category.create!(title: 'Technology')
     company               = Company.create!(name: name)
     job = company.jobs.create!(title: title,
                                level_of_interest: level_of_interest,
-                               city: city)
+                               city: city,
+                               category: category)
 
     visit edit_company_job_path(company, job)
 
@@ -29,17 +31,18 @@ describe 'User edits an existing job after clicking edit link for a job' do
     expect(page).to_not have_content(title)
   end
 
-
   describe 'user clicks submit button with empty forms' do
     it 'should reload page with error' do
       name              = 'ESPN'
       title             = 'Developer'
       level_of_interest = 80
       city              = 'Denver'
+      category          = Category.create!(title: 'Technology')
       company           = Company.create!(name: name)
       job = company.jobs.create!(title: title,
                                  level_of_interest: level_of_interest,
-                                 city: city)
+                                 city: city,
+                                 category: category)
 
       visit edit_company_job_path(company, job)
 
