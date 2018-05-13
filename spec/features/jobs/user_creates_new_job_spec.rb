@@ -4,7 +4,6 @@ describe 'User creates a new job' do
 
   scenario 'a user can navigate to the create job page for a company' do
     name = 'ESPN'
-
     company = Company.create!(name: name)
 
     visit company_jobs_path(company)

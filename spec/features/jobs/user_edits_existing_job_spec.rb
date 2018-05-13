@@ -36,7 +36,6 @@ describe 'User edits an existing job after clicking edit link for a job' do
 
   describe 'user clicks submit button with empty forms' do
     it 'should reload page with error' do
-
       name              = 'ESPN'
       title             = 'Developer'
       level_of_interest = 80

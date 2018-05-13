@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Company do
+describe Company, type: :model do
   describe 'validations' do
     context 'invalid without attributes' do
       it 'is invalid without a name' do
