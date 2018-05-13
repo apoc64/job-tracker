@@ -18,4 +18,20 @@ describe "User creates a new job" do
     expect(page).to have_content("80")
     expect(page).to have_content("Denver")
   end
+
+  scenario 'when a user tries to submit an empty job form' do
+    company = Company.create!(name: "ESPN")
+    visit new_company_job_path(company)
+
+    fill_in "job[title]", with: ""
+    fill_in "job[description]", with: ""
+    fill_in "job[level_of_interest]", with: 0
+    fill_in "job[city]", with: ""
+
+    click_button "Create"
+
+    error = "You need to enter information into all form fields before submitting!"
+    expect(current_path).to eq(new_company_job_path(company))
+    expect(page).to have_content(error)
+  end
 end

@@ -16,7 +16,8 @@ class JobsController < ApplicationController
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
-      render :new
+      flash[:notice] = "You need to enter information into all form fields before submitting!"
+      redirect_to new_company_job_path(@company)
     end
   end
 
