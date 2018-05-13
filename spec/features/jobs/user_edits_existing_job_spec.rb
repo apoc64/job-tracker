@@ -15,7 +15,7 @@ describe 'User edits an existing job' do
                                level_of_interest: level_of_interest,
                                city: city)
 
-    visit edit_company_job_path(job)
+    visit edit_company_job_path(company, job)
 
     fill_in 'job[title]',             with: new_title
     fill_in 'job[description]',       with: new_description
@@ -39,7 +39,7 @@ describe 'User edits an existing job' do
                                level_of_interest: level_of_interest,
                                city: city)
 
-    visit edit_company_job_path(job)
+    visit edit_company_job_path(company, job)
 
     fill_in 'job[title]',             with: ''
     fill_in 'job[description]',       with: ''
@@ -49,7 +49,7 @@ describe 'User edits an existing job' do
     click_button 'Update'
 
     error = 'Fill out at least one field you would like to update!'
-    expect(current_path).to eq(edit_company_job_path(job))
+    expect(current_path).to eq(edit_company_job_path(company, job))
     expect(page).to have_content(error)
   end
 end
