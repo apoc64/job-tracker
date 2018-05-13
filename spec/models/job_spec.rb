@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Job do
+describe Job, type: :model do
   describe 'validations' do
     context 'invalid without attributes' do
       it 'is invalid without a title' do
@@ -44,6 +44,19 @@ describe Job do
                     description: 'Wahooo')
       expect(job).to respond_to(:company)
     end
-    it {should belong_to(:category)}
+
+    it 'belongs to a category' do
+      job = Job.new(title: 'Software',
+                    level_of_interest: 70,
+                    description: 'Wahooo')
+      expect(job).to respond_to(:category)
+    end
+
+    it 'has many job comments' do
+      job = Job.new(title: 'Software',
+                    level_of_interest: 70,
+                    description: 'Wahooo')
+      expect(job).to respond_to(:job_comments)
+    end
   end
 end
