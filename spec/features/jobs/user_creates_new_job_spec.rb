@@ -10,10 +10,10 @@ describe 'User creates a new job' do
     company = Company.create!(name: name)
     visit new_company_job_path(company)
 
-    fill_in 'job[title]', with: title
-    fill_in 'job[description]', with: description
+    fill_in 'job[title]',             with: title
+    fill_in 'job[description]',       with: description
     fill_in 'job[level_of_interest]', with: level_of_interest
-    fill_in 'job[city]', with: city
+    fill_in 'job[city]',              with: city
 
     click_button 'Create'
 
@@ -32,10 +32,10 @@ describe 'User creates a new job' do
     company = Company.create!(name: name)
     visit new_company_job_path(company)
 
-    fill_in 'job[title]', with: ''
-    fill_in 'job[description]', with: ''
+    fill_in 'job[title]',             with: ''
+    fill_in 'job[description]',       with: ''
     fill_in 'job[level_of_interest]', with: ''
-    fill_in 'job[city]', with: ''
+    fill_in 'job[city]',              with: ''
 
     click_button 'Create'
 
