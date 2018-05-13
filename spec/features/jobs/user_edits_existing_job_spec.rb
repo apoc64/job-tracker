@@ -12,6 +12,8 @@ describe 'User edits an existing job after clicking edit link for a job' do
     new_city              = 'New York City'
     category              = Category.create!(title: 'Technology')
     company               = Company.create!(name: name)
+    category             = Category.create!(title: 'Awesome')
+    new_category             = Category.create!(title: 'Lame')
     job = company.jobs.create!(title: title,
                                level_of_interest: level_of_interest,
                                city: city,
@@ -23,6 +25,7 @@ describe 'User edits an existing job after clicking edit link for a job' do
     fill_in 'job[description]',       with: new_description
     fill_in 'job[level_of_interest]', with: new_level_of_interest
     fill_in 'job[city]',              with: new_city
+    fill_in 'job[category]',          with: new_category
 
     click_button 'Update'
 
@@ -39,6 +42,7 @@ describe 'User edits an existing job after clicking edit link for a job' do
       city              = 'Denver'
       category          = Category.create!(title: 'Technology')
       company           = Company.create!(name: name)
+      category          = Category.create!(title: title)
       job = company.jobs.create!(title: title,
                                  level_of_interest: level_of_interest,
                                  city: city,

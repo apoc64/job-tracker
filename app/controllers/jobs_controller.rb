@@ -7,6 +7,7 @@ class JobsController < ApplicationController
   def new
     @company = Company.find(params[:company_id])
     @job = Job.new()
+    @categories = Category.all
   end
 
   def create
@@ -29,6 +30,7 @@ class JobsController < ApplicationController
   def edit
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @categories = Category.all
   end
 
   def update

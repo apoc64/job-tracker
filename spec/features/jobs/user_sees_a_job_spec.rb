@@ -12,7 +12,7 @@ describe 'User sees a specific job' do
                                level_of_interest: level_of_interest,
                                city: city,
                                category: category)
-
+    
     visit company_job_path(company, job)
 
     expect(page).to have_content(job.city)

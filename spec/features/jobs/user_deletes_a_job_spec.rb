@@ -13,7 +13,7 @@ describe 'User deletes existing job' do
                                level_of_interest: level_of_interest,
                                city: city,
                                category: category)
-
+    
     visit company_jobs_path(company)
 
     within(".job_#{job.id}") do

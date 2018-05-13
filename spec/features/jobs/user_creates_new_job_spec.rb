@@ -13,15 +13,20 @@ describe 'User creates a new job' do
   end
 
   scenario 'after filling out form fields' do
-    company  = Company.create!(name: 'ESPN')
-    category = Category.create!(title: 'Technology')
+    name              = 'ESPN'
+    title             = 'Developer'
+    description       = 'So fun!'
+    city              = 'Denver'
+    level_of_interest = 80
+    company           = Company.create!(name: name)
+    category          = Category.create!(title: title)
 
     visit new_company_job_path(company)
 
-    fill_in 'job[title]',             with: 'Developer'
-    fill_in 'job[description]',       with: 'So Fun!'
-    fill_in 'job[level_of_interest]', with: 80
-    fill_in 'job[city]',              with: 'Denver'
+    fill_in 'job[title]',             with: title
+    fill_in 'job[description]',       with: description
+    fill_in 'job[level_of_interest]', with: level_of_interest
+    fill_in 'job[city]',              with: city
     fill_in 'job[category]',          with: category
 
     click_button 'Create'
@@ -37,9 +42,11 @@ describe 'User creates a new job' do
   end
 
   scenario 'when a user tries to submit an empty job form' do
-    error   = 'Enter information into all fields before submitting!'
-    name    = 'ESPN'
-    company = Company.create!(name: name)
+    error     = 'Enter information into all fields before submitting!'
+    name      = 'ESPN'
+    company   = Company.create!(name: name)
+    category  = Category.create!(title: 'Development')
+
 
     visit new_company_job_path(company)
 
