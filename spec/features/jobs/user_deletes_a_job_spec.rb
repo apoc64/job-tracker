@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User deletes existing job' do
+xdescribe 'User deletes existing job' do
   scenario 'when clicking delete link for a job' do
     company = Company.create(name: 'ESPN')
     job     = company.jobs.create!(title: 'Developer',

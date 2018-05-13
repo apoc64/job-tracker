@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User edits an existing job after clicking edit link for a job' do
+xdescribe 'User edits an existing job after clicking edit link for a job' do
   scenario 'clicks submit button with filled in forms' do
     name                  = 'ESPN'
     title                 = 'Developer'
@@ -29,7 +29,7 @@ describe 'User edits an existing job after clicking edit link for a job' do
     expect(page).to_not have_content(title)
   end
 
-  scenario 'clicks submit button with empty forms' do
+  xscenario 'clicks submit button with empty forms' do
     it 'reloads page with error' do
       name              = 'ESPN'
       title             = 'Developer'
