@@ -58,9 +58,7 @@ end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    #choose framework
     with.test_framework :rspec
-    #Or...
     with.library :rails
   end
 end
