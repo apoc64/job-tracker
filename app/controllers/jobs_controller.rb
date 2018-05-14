@@ -36,9 +36,7 @@ class JobsController < ApplicationController
   def update
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
-    @job.update(job_params)
-    @job.category_id = params[:job][:category_id]
-    if @job.save
+    if @job.update(job_params)
       flash[:success] = "#{@job.title} updated!"
       redirect_to company_job_path(@company, @job)
     else
@@ -58,6 +56,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 end

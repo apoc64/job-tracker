@@ -25,7 +25,7 @@ describe 'User edits an existing job after clicking edit link for a job' do
     fill_in 'job[description]',       with: new_description
     fill_in 'job[level_of_interest]', with: new_level_of_interest
     fill_in 'job[city]',              with: new_city
-    fill_in 'job[category]',          with: new_category
+    select new_category.title, from: job[category]
 
     click_button 'Update'
 
