@@ -1,21 +1,24 @@
-Title: <%= @job.title %>
-<br>
-
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<br>
-
-Category: <%= @job.category.title %>
-<br>
-
+<h1><%= @job.title %> at <%= @job.company.name %></h1>
 <%= link_to "Edit", edit_company_job_path(@company, @job) %>
 <%= link_to "Delete", company_job_path(@company, @job), method: "delete" %>
-</li>
+<!-- link to category index -->
+<p>See other <%= @job.category.title %> jobs</p>
+
+<h2>Location: <%= @job.city %></h2>
+<h2>Level of Interest: <%= @job.level_of_interest %></h2>
+<h2>Description: <%= @job.description %></h2>
+
+<h2>Notes:</h2>
+<textarea></textarea>
+<button>Save</button>
+
+<table>
+  <tbody>
+    <% @job.job_comments.each do |job_comment| %>
+    <tr class=job_comment_<%= job_comment.id %>>
+      <td><p><%= job_comment.created_at %></p></td>
+      <td><p><%= job_comment.content %></p></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
