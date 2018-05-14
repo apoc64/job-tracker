@@ -1,5 +1,6 @@
-All Jobs for <strong><%= @company.name %></strong>
+<header><h1>All Jobs for <%= @company.name %></h1></header>
 
+<main>
 <% @company.jobs.each do |job| %>
   <ul>
     <li>
@@ -7,3 +8,4 @@ All Jobs for <strong><%= @company.name %></strong>
     </li>
   </ul>
 <% end %>
+</main>
