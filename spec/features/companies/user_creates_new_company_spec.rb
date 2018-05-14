@@ -4,7 +4,7 @@ describe 'User creates a new company' do
   scenario 'a user can navigate to create company page' do
     visit companies_path
 
-    click_link 'Create New Company'
+    click_link 'add a new company'
 
     expect(current_path).to eq(new_company_path)
   end
