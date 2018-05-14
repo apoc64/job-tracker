@@ -10,7 +10,7 @@
 
   <%= f.label :city %>
   <%= f.text_field :city %>
-  <%= f.select :category, @categories.collect { |c| [c.title, c.id] } %>
+  <%= f.select :category_id, @categories.collect { |c| [c.title, c.id] }, disable: false%>
 
   <%= f.submit %>
 <% end %>
