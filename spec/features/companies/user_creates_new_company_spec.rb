@@ -17,9 +17,8 @@ describe 'User creates a new company' do
     fill_in 'company[name]', with: name
     click_button 'Create'
 
-    expect(current_path).to eq(company_jobs_path(Company.first.id))
+    expect(current_path).to eq(company_jobs_path(Company.last.id))
     expect(page).to have_content(name)
-    expect(Company.count).to eq(1)
   end
 
   describe 'user cannot create a company without a name' do

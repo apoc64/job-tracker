@@ -1,0 +1,9 @@
+All Jobs for <strong><%= @category.title %></strong>
+
+<% @category.jobs.each do |job| %>
+  <ul>
+    <li>
+      <%= link_to job.title, category_job_path(@category, job) %>
+    </li>
+  </ul>
+<% end %>
