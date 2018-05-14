@@ -1,9 +1,12 @@
-<h1><%= @job.title %> at <%= @job.company.name %></h1>
+<header>
+  <h1><%= @job.title %> at <%= @job.company.name %></h1>
 <%= link_to "Edit", edit_company_job_path(@company, @job) %>
 <%= link_to "Delete", company_job_path(@company, @job), method: "delete" %>
 <!-- link to category index -->
 <p>See other <%= @job.category.title %> jobs</p>
+</header>
 
+<main>
 <h2>Location: <%= @job.city %></h2>
 <h2>Level of Interest: <%= @job.level_of_interest %></h2>
 <h2>Description: <%= @job.description %></h2>
@@ -22,3 +25,4 @@
     <% end %>
   </tbody>
 </table>
+</main>

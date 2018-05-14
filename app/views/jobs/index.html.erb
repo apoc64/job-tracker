@@ -1,6 +1,9 @@
-<h1>All Jobs for <%= @company.name %></h1>
-<%= link_to "add a new job", new_company_job_path(@company) %>
+<header>
+  <h1>All Jobs for <%= @company.name %></h1>
+  <%= link_to "add a new job", new_company_job_path(@company) %>
+</header>
 
+<main>
 <table>
   <thead>
     <tr>
@@ -15,8 +18,8 @@
   <tbody>
     <% @jobs.each do |job| %>
     <tr class=job_<%= job.id %>>
-      <td><%= link_to "Edit", edit_company_job_path(@company, job) %></td>
-      <td><%= link_to "Delete", company_job_path(@company, job), method: "delete" %></td>
+      <td><%= link_to image_tag('1208-file-type-pencil@2x.svg', alt: "Edit"), edit_company_job_path(@company, job), class: 'table-button' %></td>
+      <td><%= link_to image_tag('1224-basket-delete@2x copy.svg', alt: "Delete"), company_job_path(@company, job), method: "delete", class: 'table-button' %></td>
       <td><%= link_to job.title, company_job_path(@company, job) %></td>
       <td><p><%= job.company.name %></p></td>
       <td><p><%= job.city %></p></td>
@@ -25,3 +28,4 @@
     <% end %>
   </tbody>
 </table>
+</main>

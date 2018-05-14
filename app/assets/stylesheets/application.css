@@ -60,3 +60,64 @@ body {
 .content {
 	padding: 0 0 100px;
 }
+
+body {
+	background-color: whitesmoke;
+	font-family: sans-serif;
+}
+
+header {
+	background-color: lightblue;
+	padding: 2em 2em 1.5em 2em;
+}
+header h1 {
+	padding-bottom: .6em;
+}
+header a {
+	font-size: large;
+}
+
+main {
+	padding: 1.5em 2em 2em 2em;
+}
+
+table {
+	font-size: large;
+	width: 90%;
+	border: 2px solid black;
+}
+td {
+	padding: .2em 1em .2em 1em;
+	border: 2px solid lightgrey;
+}
+.table-button {
+
+}
+th {
+	text-align: left;
+	padding: .2em 1em .2em 1em;
+}
+thead {
+	background-color: lightgrey;
+}
+
+form {
+	min-width: 400px;
+	width: 60%;
+}
+form section {
+	padding: .5em;
+	font-size: 1.3em;
+}
+form section p {
+	width: 20%;
+	text-align: right;
+	float: left;
+	padding-right: 1em;
+}
+form input {
+	height: 1.4em;
+}
+h2 {
+	padding-bottom: .5em;
+}
