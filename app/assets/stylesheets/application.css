@@ -100,3 +100,8 @@ th {
 thead {
 	background-color: lightgrey;
 }
+
+form {
+	min-width: 400px;
+	width: 60%;
+}

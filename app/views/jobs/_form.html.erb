@@ -1,29 +1,41 @@
 <%= form_for [@company, @job] do |f| %>
+<section>
   <p>Category:
   <%= f.select :category_id, @categories.collect { |c| [c.title, c.id] }, disable: false%></p>
+  <%= link_to "add new category", new_company_path %>
+</section>
 
-  <!-- link to add a new category-->
-
+<section>
   <p>Role:
   <%= f.text_field :title %></p>
+</section>
 
+<section>
   <p>Company:
   <%= f.select :company_id, @categories.collect { |c| [c.title, c.id] }, disable: true%></p>
+</section>
 
+<section>
   <p>City:
   <%= f.text_field :city %></p>
+</section>
 
+<section>
   <p>Description:
   <%= f.text_field :description %></p>
+</section>
 
+<section>
   <p>Interest:
   <%= f.number_field :level_of_interest %></p>
+</section>
 
+<section>
   <% if @job.id %>
-    <%= link_to "Cancel", company_job_path(@company, @job) %>
+    <%= link_to "Cancel", company_job_path(@company, @job), class: 'form-button'%>
   <% else %>
-    <%= link_to "Cancel", company_path(@company) %>
+    <%= link_to "Cancel", company_path(@company), class: 'form-button' %>
   <% end %>
-
-  <%= f.submit %>
+  <%= f.submit class: 'form-button' %>
+</section>
 <% end %>
