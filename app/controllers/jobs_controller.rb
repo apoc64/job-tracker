@@ -37,6 +37,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @job.update(job_params)
+    @job.category_id = params[:job][:category_id]
     if @job.save
       flash[:success] = "#{@job.title} updated!"
       redirect_to company_job_path(@company, @job)
