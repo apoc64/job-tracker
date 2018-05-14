@@ -1,24 +1,23 @@
 <%= form_for [@company, @job] do |f| %>
-  <p>Category:</p>
-  <%= f.select :category_id, @categories.collect { |c| [c.title, c.id] }, disable: false%>
-  <p>Role:</p>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <p>Category:
+  <%= f.select :category_id, @categories.collect { |c| [c.title, c.id] }, disable: false%></p>
 
-  <p>Company:</p>
-  <%= f.select :company_id, @categories.collect { |c| [c.title, c.id] }, disable: true%>
+  <!-- link to add a new category-->
 
-  <p>City:</p>
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <p>Role:
+  <%= f.text_field :title %></p>
 
-  <p>Description:</p>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <p>Company:
+  <%= f.select :company_id, @categories.collect { |c| [c.title, c.id] }, disable: true%></p>
 
-  <p>Interest:</p>
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+  <p>City:
+  <%= f.text_field :city %></p>
+
+  <p>Description:
+  <%= f.text_field :description %></p>
+
+  <p>Interest:
+  <%= f.number_field :level_of_interest %></p>
 
   <% if @job.id %>
     <%= link_to "Cancel", company_job_path(@company, @job) %>
