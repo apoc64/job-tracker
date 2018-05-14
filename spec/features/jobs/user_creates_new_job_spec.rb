@@ -27,11 +27,9 @@ describe 'User creates a new job' do
     fill_in 'job[description]',       with: description
     fill_in 'job[level_of_interest]', with: level_of_interest
     fill_in 'job[city]',              with: city
-    select category.title, from: 'job[category][id]'
-    # save_and_open_page
+    select category.title, from: 'job[category_id]'
 
     click_button 'Create'
-
     job = company.jobs.last
 
     expect(current_path).to eq(company_job_path(company, job))
@@ -54,7 +52,7 @@ describe 'User creates a new job' do
     fill_in 'job[description]',       with: ''
     fill_in 'job[level_of_interest]', with: ''
     fill_in 'job[city]',              with: ''
-    select category.title, from: 'job[category]'
+    select category.title, from: 'job[category_id]'
 
     click_button 'Create'
 
