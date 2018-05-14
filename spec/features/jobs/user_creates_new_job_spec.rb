@@ -27,8 +27,7 @@ describe 'User creates a new job' do
     fill_in 'job[description]',       with: description
     fill_in 'job[level_of_interest]', with: level_of_interest
     fill_in 'job[city]',              with: city
-    select category.title, from: 'job[category]'
-
+    select category.title, from: 'job[category][id]'
     # save_and_open_page
 
     click_button 'Create'

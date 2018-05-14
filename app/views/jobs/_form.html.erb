@@ -1,7 +1,7 @@
 <%= form_for [@company, @job] do |f| %>
 <section>
   <p>Category:</p>
-  <%= f.select :category_id, @categories.collect { |c| [c.title, c.id] }, disable: false%>
+  <%= f.collection_select :category_id, @categories, :id, :title%>
   <%= link_to "add new category", new_company_path %>
 </section>
 
@@ -10,10 +10,10 @@
   <%= f.text_field :title %>
 </section>
 
-<section>
+<!-- <section>
   <p>Company:</p>
-  <%= f.select :company_id, @categories.collect { |c| [c.title, c.id] }, disable: true%>
-</section>
+  <%= f.collection_select :company_id, @categories, :id, :title %>
+</section> -->
 
 <section>
   <p>City:</p>
