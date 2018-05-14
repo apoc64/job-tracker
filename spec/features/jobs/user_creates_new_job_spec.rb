@@ -7,7 +7,7 @@ describe 'User creates a new job' do
 
     visit company_jobs_path(company)
 
-    click_link 'Create New Job'
+    click_link 'add a new job'
 
     expect(current_path).to eq(new_company_job_path(company))
   end
