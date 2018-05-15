@@ -45,7 +45,7 @@ The rubric below describes additional functionality that you will need to add to
 * [x] When the user visits the page for a specific Job, in addition to information about the job there is a form that allows them to enter a Comment for that Job (e.g. “Spoke to hiring manager, Jacob. Plan to follow up Monday.”).
 * [x] Each comment has content (also created_at and updated_at).
 * [x] When the user submits a new comment, they are redirected back to the page for that specific job and the comment appears on the page.
-* [ ] The user can leave multiple comments on a job and the most recent comments are shown above older comments (in reverse of the order in which they were created).
+* [x] The user can leave multiple comments on a job and the most recent comments are shown above older comments (in reverse of the order in which they were created).
 
 ### Company Contacts
 

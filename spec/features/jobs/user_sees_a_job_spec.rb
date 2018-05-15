@@ -41,8 +41,8 @@ describe 'User sees a specific job' do
                                level_of_interest: 80,
                                city: 'Denver',
                                category: category)
-    comment1 = job.job_comments.create!(content: 'Type for 14 hours')
-    comment2 = job.job_comments.create!(content: 'File Paperwork')
+    comment1 = job.comments.create!(content: 'Type for 14 hours')
+    comment2 = job.comments.create!(content: 'File Paperwork')
 
     visit company_job_path(company, job)
 
@@ -65,11 +65,11 @@ describe 'User sees a specific job' do
 
     visit company_job_path(company, job)
 
-    fill_in 'job_comment[content]', with: comment_text
+    fill_in 'comment[content]', with: comment_text
     click_on 'Save'
 
     expect(current_path).to eq(company_job_path(company, job))
-    expect(page).to have_content(JobComment.last.content)
+    expect(page).to have_content(Comment.last.content)
   end
 
   scenario 'user sees all comments on job page in ascending order' do
@@ -79,16 +79,16 @@ describe 'User sees a specific job' do
                                level_of_interest: 80,
                                city: 'Denver',
                                category: category)
-    comment1 = job.job_comments.create!(content: 'First Comment')
-    comment2 = job.job_comments.create!(content: 'Second Comment')
-    comment3 = job.job_comments.create!(content: 'Third Comment')
+    comment1 = job.comments.create!(content: 'First Comment')
+    comment2 = job.comments.create!(content: 'Second Comment')
+    comment3 = job.comments.create!(content: 'Third Comment')
 
     visit company_job_path(company, job)
 
-    within('.job_comments') do
-      expect(comment1).to eq(job.job_comments.last)
-      expect(comment2).to eq(job.job_comments[1])
-      expect(comment3).to eq(job.job_comments.first)
+    within('.comments') do
+      expect(comment1).to eq(job.comments.last)
+      expect(comment2).to eq(job.comments[1])
+      expect(comment3).to eq(job.comments.first)
     end
   end
 end
