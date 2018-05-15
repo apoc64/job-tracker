@@ -19,9 +19,9 @@
   <%= f.submit "Save"%>
 <% end %>
 
-<table>
+<table class="job_comments">
   <tbody>
-    <% @job.job_comments.each do |job_comment| %>
+    <% @job_comments.each do |job_comment| %>
     <tr class=job_comment_<%= job_comment.id %>>
       <td><p><%= job_comment.created_at %></p></td>
       <td><p><%= job_comment.updated_at %></p></td>

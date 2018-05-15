@@ -79,11 +79,16 @@ describe 'User sees a specific job' do
                                level_of_interest: 80,
                                city: 'Denver',
                                category: category)
-    comment1 = job.job_comments.create!(content: 'Type for 14 hours')
-    comment2 = job.job_comments.create!(content: 'File Paperwork')
+    comment1 = job.job_comments.create!(content: 'First Comment')
+    comment2 = job.job_comments.create!(content: 'Second Comment')
+    comment3 = job.job_comments.create!(content: 'Third Comment')
 
     visit company_job_path(company, job)
 
-    # comment2 should show on page before comment1 when reading top to bottom
+    within('.job_comments') do
+      expect(comment1).to eq(job.job_comments.last)
+      expect(comment2).to eq(job.job_comments[1])
+      expect(comment3).to eq(job.job_comments.first)
+    end
   end
 end
