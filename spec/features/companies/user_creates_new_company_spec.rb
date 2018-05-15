@@ -17,13 +17,13 @@ describe 'User creates a new company' do
     fill_in 'company[name]', with: name
     click_button 'Create'
 
-    expect(current_path).to eq(company_jobs_path(Company.last.id))
+    expect(current_path).to eq(company_path(Company.last))
     expect(page).to have_content(name)
   end
 
   describe 'user cannot create a company without a name' do
     scenario 'when user clicks link to create with blank company name' do
-      error = 'You must enter a name for your company!'
+      error = 'You must enter a name for your company'
 
       visit new_company_path
 

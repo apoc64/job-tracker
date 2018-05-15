@@ -11,13 +11,13 @@ describe 'User edits an existing company' do
     fill_in 'company[name]', with: new_name
     click_button 'Update'
 
-    expect(current_path).to eq(company_jobs_path(Company.first.id))
+    expect(current_path).to eq(company_path(company))
     expect(page).to have_content(new_name)
     expect(page).to_not have_content(name)
   end
 
   scenario 'when submitting with an empty name it reloads with a message' do
-    error   = 'Company name cannot be blank!'
+    error   = 'Company name cannot be blank'
     company = Company.create!(name: 'ESPN2')
 
     visit edit_company_path(company)
