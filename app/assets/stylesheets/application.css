@@ -66,12 +66,30 @@ body {
 	font-family: sans-serif;
 }
 
+nav {
+	background-color: black;
+	height: 3em;
+	position: fixed;
+	width: 100%;
+	top: 0;
+}
+nav div {
+	height: .6em;
+}
+nav a {
+	color: white;
+	padding: 2em;
+	font-size: 1.3em;
+	top: .5em;
+}
+
 header {
 	background-color: lightblue;
-	padding: 2em 2em 1.5em 2em;
+	padding: 4.5em 2em 1.5em 2em;
 }
 header h1 {
 	padding-bottom: .6em;
+	padding-right: 2em;
 }
 header a {
 	font-size: large;
@@ -91,6 +109,10 @@ td {
 	border: 2px solid lightgrey;
 }
 .table-button {
+	width: 3em;
+	padding: 0 1em 0 1em;
+}
+.table-button a {
 
 }
 th {
@@ -103,16 +125,18 @@ thead {
 
 form {
 	min-width: 400px;
-	width: 60%;
+	width: 75%;
 }
-form section {
+section {
 	padding: .5em;
 	font-size: 1.3em;
 }
-form section p {
-	width: 20%;
+section p {
+	width: 25%;
 	text-align: right;
 	float: left;
+	font-size: 1.2em;
+	font-weight: 500;
 	padding-right: 1em;
 }
 form input {
@@ -120,4 +144,8 @@ form input {
 }
 h2 {
 	padding-bottom: .5em;
+}
+
+.empty {
+	color: whitesmoke;
 }
