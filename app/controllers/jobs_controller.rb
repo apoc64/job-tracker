@@ -25,8 +25,8 @@ class JobsController < ApplicationController
   def show
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
-    @job_comment = @job.job_comments.new
-    # @job.job_comments.order(created_at: :asc)
+    @job_comments = @job.job_comments
+    @job_comment = JobComment.new
   end
 
   def edit

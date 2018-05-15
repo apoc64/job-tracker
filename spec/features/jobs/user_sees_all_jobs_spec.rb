@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'User sees all the jobs' do
-  scenario 'for a specific company' do
+describe 'User sees all the job titles' do
+  scenario 'for a specific category' do
     category = Category.create!(title: 'Technology')
     company  = Company.create!(name: 'ESPN')
     job1 = company.jobs.create!(title: 'Developer',
@@ -13,9 +13,9 @@ describe 'User sees all the jobs' do
                                 city: 'New York City',
                                 category: category)
 
-    visit company_path(company)
+    visit category_path(category)
 
-    expect(page).to have_content(company.name)
+    expect(page).to have_content(category.title)
     expect(page).to have_content(job1.title)
     expect(page).to have_content(job2.title)
   end
