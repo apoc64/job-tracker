@@ -1,6 +1,16 @@
 <%= form_for @company do |f| %>
-  <%= f.label :name %>
+  <section>
+  <p>Name:</p>
   <%= f.text_field :name %>
+</section>
 
-  <%= f.submit %>
+  <section>
+    <p class="empty">.</p>
+    <% if @company.id %>
+      <%= link_to "Cancel", company_path(@company), class: 'form-button'%>
+    <% else %>
+      <%= link_to "Cancel", companies_path, class: 'form-button' %>
+    <% end %>
+    <%= f.submit class: 'form-button' %>
+  </section>
 <% end %>

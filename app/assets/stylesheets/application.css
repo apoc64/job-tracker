@@ -142,3 +142,7 @@ form input {
 h2 {
 	padding-bottom: .5em;
 }
+
+.empty {
+	color: whitesmoke;
+}

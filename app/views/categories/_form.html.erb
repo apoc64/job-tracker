@@ -1,6 +1,16 @@
 <%= form_for @category do |f| %>
-  <%= f.label :title %>
+<section>
+  <p>Name:</p>
   <%= f.text_field :title %>
+</section>
 
-  <%= f.submit %>
+<section>
+  <p>.</p>
+  <% if @category.id %>
+    <%= link_to "Cancel", category_path(@category), class: 'form-button'%>
+  <% else %>
+    <%= link_to "Cancel", categories_path, class: 'form-button' %>
+  <% end %>
+  <%= f.submit class: 'form-button' %>
+</section>
 <% end %>
