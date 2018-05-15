@@ -17,7 +17,7 @@ class JobsController < ApplicationController
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
-      flash[:notice] = 'Enter information into all fields before submitting!'
+      flash[:notice] = 'Enter information into all required fields before submitting!'
       redirect_to new_company_job_path(@company)
     end
   end
@@ -25,6 +25,8 @@ class JobsController < ApplicationController
   def show
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @job_comment = @job.job_comments.new
+    # @job.job_comments.order(created_at: :asc)
   end
 
   def edit
@@ -40,7 +42,7 @@ class JobsController < ApplicationController
       flash[:success] = "#{@job.title} updated!"
       redirect_to company_job_path(@company, @job)
     else
-      flash[:notice] = 'Fill out all fields before you update!'
+      flash[:notice] = 'Fill out all required fields before you update!'
       redirect_to edit_company_job_path(@company, @job)
     end
   end
