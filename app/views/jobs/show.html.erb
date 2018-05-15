@@ -1,24 +1,33 @@
 <header>
   <h1><%= @job.title %> at <%= @job.company.name %> <%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(@company, @job) %> <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(@company, @job), method: "delete" %></h1>
-<!-- link to category index -->
+
 <%= link_to "See other #{@job.category.title} jobs", category_path(@job.category) %>
 </header>
 
 <main>
-<h2>Location: <%= @job.city %></h2>
-<h2>Level of Interest: <%= @job.level_of_interest %></h2>
-<h2>Description: <%= @job.description %></h2>
-
-<h2>Notes:</h2>
-<%= form_for @job_comment do |f| %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+  <%= form_for @job_comment do |f| %>
+  <section>
+    <p>Location:</p>
+    <h3><%= @job.city %></h3>
+  </section>
+  <section>
+    <p>Level of Interest:</p>
+    <h3><%= @job.level_of_interest %></h3>
+  </section>
+  <section>
+  <p>Description:</p>
+  <h3><%= @job.description %></h3>
+</section>
+<section>
+  <p>Notes:</p>
+  <%= f.text_area :content %>
   <%= f.hidden_field :job_id, value: @job.id %>
   <%= f.submit "Save"%>
-<% end %>
+</section>
+  <% end %>
 
-<table>
-  <tbody>
+  <table>
+    <tbody>
     <% @job.job_comments.each do |job_comment| %>
     <tr class=job_comment_<%= job_comment.id %>>
       <td><p><%= job_comment.created_at %></p></td>

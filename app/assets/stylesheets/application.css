@@ -125,16 +125,18 @@ thead {
 
 form {
 	min-width: 400px;
-	width: 60%;
+	width: 75%;
 }
-form section {
+section {
 	padding: .5em;
 	font-size: 1.3em;
 }
-form section p {
-	width: 20%;
+section p {
+	width: 25%;
 	text-align: right;
 	float: left;
+	font-size: 1.2em;
+	font-weight: 500;
 	padding-right: 1em;
 }
 form input {
