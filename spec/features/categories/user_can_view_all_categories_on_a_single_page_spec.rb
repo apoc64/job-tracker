@@ -24,5 +24,19 @@ describe 'User visits all categories page' do
     expect(page).to have_content(message)
     expect(page).to_not have_link(category.title)
   end
-  # link to edit
+
+  scenario 'a user edits from that page' do
+    category = Category.create(title: 'Sewer Scrubber')
+
+    visit categories_path
+
+    within(".category_#{category.id}") do
+      click_link "Edit"
+    end
+
+    expect(current_path).to eq(edit_category_path(category))
+  end
+
+
+
 end
