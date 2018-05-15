@@ -15,8 +15,8 @@
   <tbody>
     <% @categories.each do |category| %>
     <tr class=category_<%= category.id %>>
-      <td class="table-button"><%= link_to image_tag('1208-file-type-pencil@2x.svg', alt: "Edit"), edit_category_path(category) %></td>
-      <td class="table-button"><%= link_to image_tag('1224-basket-delete@2x copy.svg', alt: "Delete"), category_path(category), method: "delete" %></td>
+      <td class="table-button"><%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_category_path(category) %></td>
+      <td class="table-button"><%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), category_path(category), method: "delete" %></td>
       <td><%= link_to category.title, category_path(category) %></td>
     </tr>
     <% end %>
