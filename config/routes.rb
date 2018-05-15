@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :categories do
     resources :jobs
   end
-  
+
   resources :companies do
     resources :jobs
   end

@@ -44,15 +44,8 @@ describe 'User creates a new job' do
     error     = 'Enter information into all fields before submitting!'
     name      = 'ESPN'
     company   = Company.create!(name: name)
-    category  = Category.create!(title: 'Development')
 
     visit new_company_job_path(company)
-
-    fill_in 'job[title]',             with: ''
-    fill_in 'job[description]',       with: ''
-    fill_in 'job[level_of_interest]', with: ''
-    fill_in 'job[city]',              with: ''
-    select category.title, from: 'job[category_id]'
 
     click_button 'Create'
 
