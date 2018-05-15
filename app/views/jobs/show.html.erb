@@ -1,9 +1,7 @@
 <header>
-  <h1><%= @job.title %> at <%= @job.company.name %></h1>
-<%= link_to "Edit", edit_company_job_path(@company, @job) %>
-<%= link_to "Delete", company_job_path(@company, @job), method: "delete" %>
+  <h1><%= @job.title %> at <%= @job.company.name %> <%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(@company, @job) %> <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(@company, @job), method: "delete" %></h1>
 <!-- link to category index -->
-<p>See other <%= @job.category.title %> jobs</p>
+<%= link_to "See other #{@job.category.title} jobs", category_path(@job.category) %>
 </header>
 
 <main>

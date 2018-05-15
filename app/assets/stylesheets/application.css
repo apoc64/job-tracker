@@ -89,6 +89,7 @@ header {
 }
 header h1 {
 	padding-bottom: .6em;
+	padding-right: 2em;
 }
 header a {
 	font-size: large;
