@@ -41,7 +41,7 @@ describe 'User creates a new job' do
   end
 
   scenario 'when a user tries to submit an empty job form' do
-    error     = 'Enter information into all fields before submitting!'
+    error     = 'Enter information into all required fields before submitting!'
     name      = 'ESPN'
     company   = Company.create!(name: name)
 

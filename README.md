@@ -36,15 +36,15 @@ The rubric below describes additional functionality that you will need to add to
 * [x] The user can create a new Category by filling out a form. Each Category has a title (e.g. “Web Development”, “Education”, “Finance”).
 * [x] When the user successfully creates a Category they are shown a page with the Category title.
 * [x] When the user tries to create a Category that already exists, they are brought back to the page with the form to create a Category.
-* [ ] The user can view a list of all Categories on a single page, and each Category can be deleted from that page. There is also a link to “Edit” each Category, which takes the user to a form where they can update the Category.
-* [ ] When the user creates a new Job, they are required to select its Category from a drop down menu of existing categories. They also see a link to create a new Category.
-* [ ] When the user visits a page for a specific Category, they see a list of Jobs in that Category.
+* [x] The user can view a list of all Categories on a single page, and each Category can be deleted from that page. There is also a link to “Edit” each Category, which takes the user to a form where they can update the Category.
+* [x] When the user creates a new Job, they are required to select its Category from a drop down menu of existing categories. They also see a link to create a new Category.
+* [x] When the user visits a page for a specific Category, they see a list of Jobs in that Category.
 
 ### Job Comments
 
-* [ ] When the user visits the page for a specific Job, in addition to information about the job there is a form that allows them to enter a Comment for that Job (e.g. “Spoke to hiring manager, Jacob. Plan to follow up Monday.”).
-* [ ] Each comment has content (also created_at and updated_at).
-* [ ] When the user submits a new comment, they are redirected back to the page for that specific job and the comment appears on the page.
+* [x] When the user visits the page for a specific Job, in addition to information about the job there is a form that allows them to enter a Comment for that Job (e.g. “Spoke to hiring manager, Jacob. Plan to follow up Monday.”).
+* [x] Each comment has content (also created_at and updated_at).
+* [x] When the user submits a new comment, they are redirected back to the page for that specific job and the comment appears on the page.
 * [ ] The user can leave multiple comments on a job and the most recent comments are shown above older comments (in reverse of the order in which they were created).
 
 ### Company Contacts

@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     resources :jobs
   end
 
-  resources :jobs do
-    resources :job_comments
-  end
+  resources :job_comments, only: :create
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

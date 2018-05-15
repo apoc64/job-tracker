@@ -36,8 +36,8 @@ describe 'User creates a new category' do
 
   describe 'when the user tries to create a categoy that already exists' do
     scenario 'it redirects to a form for new category' do
-      category = Category.create(title: "Sewer Scrubber")
-      error = "That category already exists"
+      category = Category.create(title: 'Sewer Scrubber')
+      error = "#{category.title} already exists"
 
       visit new_category_path
 
@@ -48,5 +48,4 @@ describe 'User creates a new category' do
       expect(page).to have_content(error)
     end
   end
-
 end
