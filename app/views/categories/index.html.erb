@@ -1,6 +1,9 @@
+<header>
 <h1>Categories</h1>
 <%= link_to "add a new category", new_category_path %>
+</header>
 
+<main>
 <table>
   <thead>
     <tr>
@@ -12,10 +15,11 @@
   <tbody>
     <% @categories.each do |category| %>
     <tr class=category_<%= category.id %>>
-      <td><%= link_to "Edit", edit_category_path(category) %></td>
-      <td><%= link_to "Delete", category_path(category), method: "delete" %></td>
+      <td><%= link_to image_tag('1208-file-type-pencil@2x.svg', alt: "Edit"), edit_category_path(category) %></td>
+      <td><%= link_to image_tag('1224-basket-delete@2x copy.svg', alt: "Delete"), category_path(category), method: "delete" %></td>
       <td><%= link_to category.title, category_path(category) %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</main>

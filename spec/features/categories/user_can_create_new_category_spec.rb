@@ -33,4 +33,20 @@ describe 'User creates a new category' do
       expect(page).to have_content(error)
     end
   end
+
+  describe 'when the user tries to create a categoy that already exists' do
+    scenario 'it redirects to a form for new category' do
+      category = Category.create(title: "Sewer Scrubber")
+      error = "That category already exists"
+
+      visit new_category_path
+
+      fill_in 'category[title]', with: category.title
+      click_button 'Create'
+
+      expect(current_path).to eq(new_category_path)
+      expect(page).to have_content(error)
+    end
+  end
+
 end

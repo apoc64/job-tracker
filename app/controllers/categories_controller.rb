@@ -17,9 +17,25 @@ class CategoriesController < ApplicationController
       flash[:success] = "#{@category.title} added!"
       redirect_to category_path(@category)
     else
-      flash[:notice] = 'You must enter a title for your category!'
+      if category_params[:title] == ""
+        flash[:notice] = 'You must enter a title for your category!'
+      else
+        flash[:notice] = "That category already exists"
+      end
       redirect_to new_category_path
     end
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    category.destroy
+
+    flash[:success] = "#{category.title} was successfully deleted!"
+    redirect_to categories_path
+  end
+
+  def edit
+    @category = Category.find(params[:id])
   end
 
   private

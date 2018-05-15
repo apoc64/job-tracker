@@ -11,4 +11,12 @@ describe 'User can navigate the site' do
 
     expect(current_path).to eq(companies_path)
   end
+
+  scenario 'a user can navigate to categories' do
+    visit companies_path
+
+    click_link 'Categories'
+
+    expect(current_path).to eq(categories_path)
+  end
 end

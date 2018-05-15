@@ -1,5 +1,6 @@
-All Jobs for <strong><%= @category.title %></strong>
+<header><h1>All Jobs for <%= @category.title %></h1><header>
 
+<main>
 <% @category.jobs.each do |job| %>
   <ul>
     <li>
@@ -7,3 +8,4 @@ All Jobs for <strong><%= @category.title %></strong>
     </li>
   </ul>
 <% end %>
+</main>

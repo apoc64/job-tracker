@@ -1,6 +1,8 @@
-<h1>Companies</h1>
+<header><h1>Companies</h1>
 <%= link_to "add a new company", new_company_path %>
+</header>
 
+<main>
 <table>
   <thead>
     <tr>
@@ -12,10 +14,11 @@
   <tbody>
     <% @companies.each do |company| %>
     <tr class=company_<%= company.id %>>
-      <td><%= link_to "Edit", edit_company_path(company) %></td>
-      <td><%= link_to "Delete", company_path(company), method: "delete" %></td>
+      <td><%= link_to image_tag('1208-file-type-pencil@2x.svg', alt: "Edit"), edit_company_path(company) %></td>
+      <td><%= link_to image_tag('1224-basket-delete@2x copy.svg', alt: "Delete"), company_path(company), method: "delete" %></td>
       <td><%= link_to company.name, company_path(company) %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</main>
