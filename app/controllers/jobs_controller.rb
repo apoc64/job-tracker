@@ -17,21 +17,33 @@ class JobsController < ApplicationController
     if params[:company_id]
       @company = Company.find(params[:company_id])
     else
-      # binding.pry
       @category = Category.find(params[:category_id])
     end
     @job = Job.new()
   end
 
   def create
-    @company = Company.find(params[:company_id])
-    @job = @company.jobs.new(job_params)
-    if @job.save
-      flash[:success] = "You created #{@job.title} at #{@company.name}"
-      redirect_to company_job_path(@company, @job)
+    # binding.pry
+    if params[:company_id]
+      parent = Company.find(params[:company_id])
+    else
+      parent = Category.find(params[:category_id])
+    end
+    job = parent.jobs.new(job_params)
+    if job.save
+      flash[:success] = "You created #{job.title}"
+      if params[:company_id]
+        redirect_to company_job_path(parent, job)
+      else
+        redirect_to category_job_path(parent, job)
+      end
     else
       flash[:notice] = 'Enter information into all required fields before submitting!'
-      redirect_to new_company_job_path(@company)
+      if params[:company_id]
+        redirect_to new_company_job_path(parent)
+      else
+        redirect_to new_category_job_path(parent)
+      end
     end
   end
 
@@ -72,6 +84,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :company_id)
   end
 end
