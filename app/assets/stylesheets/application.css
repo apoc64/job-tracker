@@ -165,4 +165,16 @@ aside div {
 
 .top-companies {
 	border: 2px solid black;
+
+.notice {
+	position: fixed;
+	top: 3em;
+	left: 2em;
+	color: red;
+}
+.success {
+	position: fixed;
+	top: 3em;
+	left: 2em;
+	color: darkgreen;
 }
