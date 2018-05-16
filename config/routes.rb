@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
   resources :categories do
     resources :jobs
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :jobs do
     resources :comments, only: :create
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
