@@ -1,4 +1,5 @@
-<header><h1>All Jobs for <%= @category.title %></h1></header>
+<header><h1>All Jobs for <%= @category.title %></h1>
+<%= link_to "Create a new job", new_category_job_path(@category) %></header>
 
 <main>
   <table>

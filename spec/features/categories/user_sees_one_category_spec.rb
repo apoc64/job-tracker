@@ -12,6 +12,17 @@ describe 'User visits all categories page' do
   end
 end
 
+describe 'User visits a category page' do
+  scenario 'a user can create a new job' do
+    category = Category.create(title: 'Developer')
+    visit category_path(category)
+
+    click_link 'Create a new job'
+
+    expect(current_path).to eq(new_category_job_path(category))
+  end
+end
+
 describe 'User visits single category page' do
   scenario 'it shows multiple jobs' do
     category = Category.create(title: 'Developer')
@@ -33,6 +44,7 @@ describe 'User visits single category page' do
     expect(page).to have_content(job2.city)
     expect(page).to have_content(job2.title)
   end
+
   scenario 'it can delete a job' do
     category = Category.create(title: 'Developer')
     company = Company.create!(name: 'ESPN')

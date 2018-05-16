@@ -1,7 +1,18 @@
+<% if @company
+  parent = @company
+  edit_path = edit_company_job_path(parent, @job)
+  path = company_job_path(parent, @job)
+else
+  parent = @category
+  edit_path = edit_category_job_path(parent, @job)
+  path = category_job_path(parent, @job)
+end
+%>
+
 <header>
   <h1><%= @job.title %> at <%= @job.company.name %>
-    <%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(@company, @job) %>
-    <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(@company, @job), method: "delete" %></h1>
+    <%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_path %>
+    <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), path, method: "delete" %></h1>
 
 <%= link_to "See other #{@job.category.title} jobs", category_path(@job.category) %>
 </header>

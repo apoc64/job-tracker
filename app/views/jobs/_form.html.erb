@@ -1,8 +1,14 @@
-<%= form_for [@company, @job] do |f| %>
+<% if @company
+    parent = @company
+  else
+    parent = @category
+  end %>
+
+<%= form_for [parent, @job] do |f| %>
 <section>
   <p>Category:</p>
   <%= f.collection_select :category_id, @categories, :id, :title%>
-  <%= link_to "add new category", new_company_path %>
+  <%= link_to "add new category", new_category_path %>
 </section>
 
 <section>
@@ -10,10 +16,10 @@
   <%= f.text_field :title %>
 </section>
 
-<!-- <section>
+<section>
   <p>Company:</p>
-  <%= f.collection_select :company_id, @categories, :id, :title %>
-</section> -->
+  <%= f.collection_select :company_id, @companies, :id, :name %>
+</section>
 
 <section>
   <p>City:</p>
@@ -33,9 +39,9 @@
 <section>
   <p class="empty">.</p>
   <% if @job.id %>
-    <%= link_to "Cancel", company_job_path(@company, @job), class: 'form-button'%>
+    <%= link_to "Cancel", company_job_path(parent, @job), class: 'form-button'%>
   <% else %>
-    <%= link_to "Cancel", company_path(@company), class: 'form-button' %>
+    <%= link_to "Cancel", company_path(parent), class: 'form-button' %>
   <% end %>
   <%= f.submit class: 'form-button' %>
 </section>

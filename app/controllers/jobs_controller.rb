@@ -12,25 +12,48 @@ class JobsController < ApplicationController
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
     @categories = Category.all
+    @companies = Company.all
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      parent = @company
+    else
+      @category = Category.find(params[:category_id])
+      parent = @category
+    end
+    @job = parent.jobs.new()
   end
 
   def create
-    @company = Company.find(params[:company_id])
-    @job = @company.jobs.new(job_params)
-    if @job.save
-      flash[:success] = "You created #{@job.title} at #{@company.name}"
-      redirect_to company_job_path(@company, @job)
+    if params[:company_id]
+      parent = Company.find(params[:company_id])
+    else
+      parent = Category.find(params[:category_id])
+    end
+    job = Job.new(job_params)
+    if job.save
+      flash[:success] = "You created #{job.title}"
+      if params[:company_id]
+        redirect_to company_job_path(parent, job)
+      else
+        redirect_to category_job_path(parent, job)
+      end
     else
       flash[:notice] = 'Enter information into all required fields before submitting!'
-      redirect_to new_company_job_path(@company)
+      if params[:company_id]
+        redirect_to new_company_job_path(parent)
+      else
+        redirect_to new_category_job_path(parent)
+      end
     end
   end
 
   def show
-    @company = Company.find(params[:company_id])
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+    else
+      @category = Category.find(params[:category_id])
+    end
     @job = Job.find(params[:id])
     @comment = Comment.new
     @comments = @job.comments.order(created_at: :desc)
@@ -40,6 +63,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @categories = Category.all
+    @companies = Company.all
   end
 
   def update
@@ -65,6 +89,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :company_id)
   end
 end
