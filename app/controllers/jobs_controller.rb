@@ -1,11 +1,9 @@
 class JobsController < ApplicationController
   def index
-    # binding.pry
     if params[:company_id]
       @company = Company.find(params[:company_id])
       @jobs = @company.jobs
     else
-      # binding.pry
       @city = params[:location]
       @jobs = Job.where(city: @city)
     end

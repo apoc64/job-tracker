@@ -34,7 +34,7 @@ describe 'User creates a new category' do
     end
   end
 
-  describe 'when the user tries to create a categoy that already exists' do
+  describe 'when the user tries to create a category that already exists' do
     scenario 'it redirects to a form for new category' do
       category = Category.create(title: 'Sewer Scrubber')
       error = "#{category.title} already exists"

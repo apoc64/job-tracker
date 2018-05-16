@@ -5,7 +5,7 @@ describe 'User visits all categories page' do
     category = Category.create(title: 'Developer')
     visit categories_path
 
-    click_link 'Developer'
+    click_link '0 jobs'
 
     expect(current_path).to eq(category_path(category))
     expect(page).to have_content(category.title)
