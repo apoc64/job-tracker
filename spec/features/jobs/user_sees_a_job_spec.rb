@@ -79,16 +79,22 @@ describe 'User sees a specific job' do
                                level_of_interest: 80,
                                city: 'Denver',
                                category: category)
-    comment1 = job.comments.create!(content: 'First Comment', created_at: "2018-05-16 00:22:10")
-    comment2 = job.comments.create!(content: 'Second Comment', created_at: "2019-05-16 00:22:10")
-    comment3 = job.comments.create!(content: 'Third Comment', created_at: "2020-05-16 00:22:10")
+    comment1 = job.comments.create!(content: 'First Comment')
+    comment2 = job.comments.create!(content: 'Second Comment')
+    comment3 = job.comments.create!(content: 'Third Comment')
 
     visit company_job_path(company, job)
 
-    within('.comments') do
-      expect(comment1).to eq(job.comments.last)
-      expect(comment2).to eq(job.comments[1])
-      expect(comment3).to eq(job.comments.first)
+    within(".comment_#{comment3.id}") do
+      expect(page).to have_content(comment3.created_at)
+    end
+
+    within(".comment_#{comment2.id}") do
+      expect(page).to have_content(comment2.created_at)
+    end
+
+    within(".comment_#{comment1.id}") do
+      expect(page).to have_content(comment1.created_at)
     end
   end
 end
