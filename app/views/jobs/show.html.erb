@@ -1,40 +1,47 @@
 <header>
-  <h1><%= @job.title %> at <%= @job.company.name %> <%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(@company, @job) %> <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(@company, @job), method: "delete" %></h1>
+  <h1><%= @job.title %> at <%= @job.company.name %>
+    <%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(@company, @job) %>
+    <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(@company, @job), method: "delete" %></h1>
 
 <%= link_to "See other #{@job.category.title} jobs", category_path(@job.category) %>
 </header>
 
 <main>
-  <%= form_for @comment do |f| %>
+  <%= form_for [@job, @comment] do |f| %>
+
   <section>
     <p>Location:</p>
     <h3><%= @job.city %></h3>
   </section>
+
   <section>
     <p>Level of Interest:</p>
     <h3><%= @job.level_of_interest %></h3>
   </section>
+
   <section>
-  <p>Description:</p>
-  <h3><%= @job.description %></h3>
-</section>
-<section>
-  <p>Notes:</p>
-  <%= f.text_area :content %>
-  <%= f.hidden_field :job_id, value: @job.id %>
-  <%= f.submit "Save"%>
-</section>
+    <p>Description:</p>
+    <h3><%= @job.description %></h3>
+  </section>
+
+  <section>
+    <p>Notes:</p>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :job_id, value: @job.id %>
+    <%= f.submit "Save"%>
+  </section>
   <% end %>
 
-<table class="comments">
-  <tbody>
-    <% @comments.each do |comment| %>
-    <tr class=comment_<%= comment.id %>>
-      <td><p><%= comment.created_at %></p></td>
-      <td><p><%= comment.updated_at %></p></td>
-      <td><p><%= comment.content %></p></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <table class="comments">
+    <tbody>
+      <% @comments.each do |comment| %>
+      <tr class=comment_<%= comment.id %>>
+        <td><li><%= comment.created_at %></li></td>
+        <td><p><%= comment.updated_at %></p></td>
+        <td><p><%= comment.content %></p></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 </main>
