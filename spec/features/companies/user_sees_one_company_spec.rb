@@ -28,8 +28,24 @@ describe 'when visiting a company show page' do
 
     expect(current_path).to eq(companies_path)
 
+    message = 'ESPN was successfully deleted!'
     expect(page).to_not have_link(company.name)
-    expect(page).to have_content('ESPN was successfully deleted!')
+    expect(page).to have_content(message)
+  end
+
+  scenario 'a user can view contacts for the company' do
+    company = Company.create!(name: 'ESPN')
+    contact1 = company.contacts.create!(full_name: "Steve", position: "Superhero", email: "bob@bob.bob")
+    contact2 = company.contacts.create!(full_name: "Steph", position: "Supervillian", email: "wob@wob.wob")
+
+    visit company_path(company)
+
+    expect(page).to have_content(contact1.full_name)
+    expect(page).to have_content(contact1.position)
+    expect(page).to have_content(contact1.email)
+    expect(page).to have_content(contact2.full_name)
+    expect(page).to have_content(contact2.position)
+    expect(page).to have_content(contact2.email)
   end
 
 
