@@ -72,4 +72,55 @@ describe 'User sees a dashboard page when visiting /dashboard' do
     expect(page).to have_content(Job.grouped_with_highest_interest_level.first.last)
     expect(page).to have_content(Job.grouped_with_highest_interest_level.last.last)
   end
+
+  it 'should see job links by city' do
+    label     = 'Jobs by Interest'
+    category1 = Category.create!(title: 'Technology')
+    company1  = Company.create!(name: 'ESPN')
+    job1 = company1.jobs.create!(title: 'Developer',
+                                 level_of_interest: 80,
+                                 city: 'Denver',
+                                 category: category1)
+    job2 = company1.jobs.create!(title: 'QA Analyst',
+                                 level_of_interest: 20,
+                                 city: 'New York City',
+                                 category: category1)
+    category2 = Category.create!(title: 'Astrology')
+    company2  = Company.create!(name: 'Stars')
+    job3 = company2.jobs.create!(title: 'Reader',
+                                 level_of_interest: 50,
+                                 city: 'Seattle',
+                                 category: category2)
+           company2.jobs.create!(title: 'Lily Layer',
+                                 level_of_interest: 35,
+                                 city: 'Denver',
+                                 category: category2)
+    visit dashboard_path
+
+    expect(page).to have_content(label)
+    expect(page).to have_link("#{job1.city} jobs")
+    expect(page).to have_link("#{job2.city} jobs")
+    expect(page).to have_link("#{job3.city} jobs")
+    expect(page).to have_content(Job.grouped_with_city.first.last)
+    expect(page).to have_content(Job.grouped_with_city.last.last)
+
+    within('.job-by-city') do
+      click_link job1.city
+    end
+    expect(page).to have_content("All Jobs for #{job1.city}")
+
+    visit dashboard_path
+
+    within('.job-by-city') do
+      click_link job2.city
+    end
+    expect(page).to have_content("All Jobs for #{job2.city}")
+
+    visit dashboard_path
+
+    within('.job-by-city') do
+      click_link job3.city
+    end
+    expect(page).to have_content("All Jobs for #{job3.city}")
+  end
 end

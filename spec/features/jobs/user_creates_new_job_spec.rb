@@ -81,4 +81,19 @@ describe 'User creates a new job' do
     expect(current_path).to eq(new_company_job_path(company))
     expect(page).to have_content(error)
   end
+
+  scenario 'when a user wants to create a new job from category page' do
+    category = Category.create!(title: 'Technology')
+    company  = Company.create!(name: 'ESPN')
+    job1 = company.jobs.create!(title: 'Developer',
+                                level_of_interest: 80,
+                                city: 'Denver',
+                                category: category)
+
+    visit category_path(category)
+
+    click_link 'Create a new job'
+
+    expect(current_path).to eq(new_category_job_path(category))
+  end
 end

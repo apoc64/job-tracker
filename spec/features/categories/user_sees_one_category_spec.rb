@@ -28,13 +28,13 @@ describe 'User visits single category page' do
     category = Category.create(title: 'Developer')
     company = Company.create!(name: 'ESPN')
     job1 = category.jobs.create!(title: 'Sr Dev',
-                               level_of_interest: 30,
-                               city: 'Denver',
-                               company: company)
+                                 level_of_interest: 30,
+                                 city: 'Denver',
+                                 company: company)
     job2 = category.jobs.create!(title: 'Jr Dev',
-                               level_of_interest: 40,
-                               city: 'New York',
-                               company: company)
+                                 level_of_interest: 40,
+                                 city: 'New York',
+                                 company: company)
 
     visit category_path(category)
 
@@ -49,13 +49,13 @@ describe 'User visits single category page' do
     category = Category.create(title: 'Developer')
     company = Company.create!(name: 'ESPN')
     job1 = category.jobs.create!(title: 'Sr Dev',
-                               level_of_interest: 30,
-                               city: 'Denver',
-                               company: company)
-    job2 = category.jobs.create!(title: 'Jr Dev',
-                               level_of_interest: 40,
-                               city: 'New York',
-                               company: company)
+                                 level_of_interest: 30,
+                                 city: 'Denver',
+                                 company: company)
+           category.jobs.create!(title: 'Jr Dev',
+                                 level_of_interest: 40,
+                                 city: 'New York',
+                                 company: company)
 
     visit category_path(category)
 
@@ -72,13 +72,13 @@ describe 'User visits single category page' do
     category = Category.create(title: 'Developer')
     company = Company.create!(name: 'ESPN')
     job1 = category.jobs.create!(title: 'Sr Dev',
-      level_of_interest: 30,
-      city: 'Denver',
-      company: company)
-    job2 = category.jobs.create!(title: 'Jr Dev',
-        level_of_interest: 40,
-        city: 'New York',
-        company: company)
+                                 level_of_interest: 30,
+                                 city: 'Denver',
+                                 company: company)
+           category.jobs.create!(title: 'Jr Dev',
+                                 level_of_interest: 40,
+                                 city: 'New York',
+                                 company: company)
 
     visit category_path(category)
 

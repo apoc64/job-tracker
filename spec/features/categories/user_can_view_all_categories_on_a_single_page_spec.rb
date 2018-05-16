@@ -48,6 +48,4 @@ describe 'User visits /categories' do
 
     expect(current_path).to eq(category_path(category))
   end
-
-
 end

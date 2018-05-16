@@ -14,7 +14,7 @@ describe 'when visiting a company show page' do
 
     visit company_path(company)
 
-    click_link "Edit"
+    click_link 'Edit'
 
     expect(current_path).to eq(edit_company_path(company))
   end
@@ -24,7 +24,7 @@ describe 'when visiting a company show page' do
 
     visit company_path(company)
 
-    click_link "Delete"
+    click_link 'Delete'
 
     expect(current_path).to eq(companies_path)
 
@@ -35,8 +35,8 @@ describe 'when visiting a company show page' do
 
   scenario 'a user can view contacts for the company' do
     company = Company.create!(name: 'ESPN')
-    contact1 = company.contacts.create!(full_name: "Steve", position: "Superhero", email: "bob@bob.bob")
-    contact2 = company.contacts.create!(full_name: "Steph", position: "Supervillian", email: "wob@wob.wob")
+    contact1 = company.contacts.create!(full_name: 'Steve', position: 'Superhero', email: 'bob@bob.bob')
+    contact2 = company.contacts.create!(full_name: 'Steph', position: 'Supervillian', email: 'wob@wob.wob')
 
     visit company_path(company)
 
@@ -60,8 +60,7 @@ describe 'when visiting a company show page' do
     fill_in 'contact[position]', with: position
     fill_in 'contact[email]', with: email
 
-    # save_and_open_path
-    click_on "Create Contact"
+    click_on 'Create Contact'
 
     expect(current_path).to eq(company_path(company))
     within('.contacts') do
@@ -71,5 +70,18 @@ describe 'when visiting a company show page' do
     end
   end
 
+  scenario 'shows error when trying to fill in a contact without all info' do
+    error = 'You must enter all info for your contact'
 
+    company = Company.create!(name: 'ESPN')
+
+    visit company_path(company)
+
+    name = 'Steve'
+    fill_in 'contact[full_name]', with: name
+    click_on 'Create Contact'
+
+    expect(current_path).to eq(company_path(company))
+    expect(page).to have_content(error)
+  end
 end

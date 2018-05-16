@@ -16,6 +16,13 @@ class Job < ApplicationRecord
                         .take(3)
   end
 
+  def self.grouped_with_city
+  cities_array = select(:city).group(:city).count.to_a
+  cities_array.sort_by do |city|
+    -city[1]
+  end
+  end
+
   def self.group_company_names
     joins(:company).group(:name)
   end
