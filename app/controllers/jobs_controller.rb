@@ -48,7 +48,11 @@ class JobsController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:company_id])
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+    else
+      @category = Category.find(params[:category_id])
+    end
     @job = Job.find(params[:id])
     @comment = Comment.new
     @comments = @job.comments.order(created_at: :desc)
