@@ -79,9 +79,9 @@ describe 'User sees a specific job' do
                                level_of_interest: 80,
                                city: 'Denver',
                                category: category)
-    comment1 = job.comments.create!(content: 'First Comment')
-    comment2 = job.comments.create!(content: 'Second Comment')
-    comment3 = job.comments.create!(content: 'Third Comment')
+    comment1 = job.comments.create!(content: 'First Comment', created_at: "2018-05-16 00:22:10")
+    comment2 = job.comments.create!(content: 'Second Comment', created_at: "2019-05-16 00:22:10")
+    comment3 = job.comments.create!(content: 'Third Comment', created_at: "2020-05-16 00:22:10")
 
     visit company_job_path(company, job)
 

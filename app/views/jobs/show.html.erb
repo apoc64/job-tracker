@@ -5,7 +5,7 @@
 </header>
 
 <main>
-  <%= form_for @comment do |f| %>
+  <%= form_for [@job, @comment] do |f| %>
   <section>
     <p>Location:</p>
     <h3><%= @job.city %></h3>
@@ -26,7 +26,15 @@
 </section>
   <% end %>
 
-<table class="comments">
+  <ul class="comments">
+  <% if @comments %>
+    <%  @comments.each do |comment| %>
+      <li><%= comment.created_at %> <%= comment.content %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<!-- <table class="comments">
   <tbody>
     <% @comments.each do |comment| %>
     <tr class=comment_<%= comment.id %>>
@@ -37,4 +45,4 @@
     <% end %>
   </tbody>
 </table>
-</main>
+</main> -->
