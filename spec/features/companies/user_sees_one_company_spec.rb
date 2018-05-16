@@ -48,5 +48,28 @@ describe 'when visiting a company show page' do
     expect(page).to have_content(contact2.email)
   end
 
+  scenario 'a user can create contacts for the company' do
+    company = Company.create!(name: 'ESPN')
+
+    visit company_path(company)
+
+    name = 'Steve'
+    position = 'superhero'
+    email = 'bob@bob.bob'
+    fill_in 'contact[full_name]', with: name
+    fill_in 'contact[position]', with: position
+    fill_in 'contact[email]', with: email
+
+    # save_and_open_path
+    click_on "Create Contact"
+
+    expect(current_path).to eq(company_path(company))
+    within('.contacts') do
+      expect(page).to have_content(name)
+      expect(page).to have_content(name)
+      expect(page).to have_content(name)
+    end
+  end
+
 
 end

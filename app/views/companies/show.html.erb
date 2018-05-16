@@ -1,11 +1,35 @@
 <header><h1><%= @company.name %><%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_path(@company) %> <%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_path(@company), method: "delete" %></h1></header>
 
 <main>
-<!-- <% @company.jobs.each do |job| %>
-  <ul>
-    <li>
-      <%= link_to job.title, company_job_path(@company, job) %>
-    </li>
-  </ul>
-<% end %> -->
+  <%= form_for [@company, @contact] do |f| %>
+  <section>
+    <p>Name:</p>
+    <%= f.text_field :full_name %>
+  </section>
+  <section>
+    <p>Role:</p>
+    <%= f.text_field :position %>
+  </section>
+  <section>
+    <p>Email:</p>
+    <%= f.text_field :email %>
+  </section>
+  <section>
+    <p class="empty">.</p>
+    <%= f.submit class: 'form-button' %>
+  </section>
+  <% end %>
+
+  <table class="contacts">
+    <tbody>
+      <% @contacts.each do |contact| %>
+      <tr class=contact_<%= contact.id %>>
+        <td><p><%= contact.full_name %></p></td>
+        <td><p><%= contact.position %></p></td>
+        <td><p><%= contact.email %></p></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 </main>
