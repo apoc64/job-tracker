@@ -18,22 +18,6 @@ describe 'User sees a specific job' do
     expect(page).to have_content(job.category.title)
   end
 
-  # scenario 'user can click link of job to be directed to its show page' do
-  #   category = Category.create!(title: 'Technology')
-  #   company  = Company.create!(name: 'ESPN')
-  #   job = company.jobs.create!(title: 'Developer',
-  #                              level_of_interest: 80,
-  #                              city: 'Denver',
-  #                              category: category)
-  #
-  #   visit company_path(company)
-  #   save_and_open_page
-  #   click_link(job.title)
-  #
-  #   expect(current_path).to eq(company_job_path(company, job))
-  #   expect(page).to have_content(job.title)
-  # end
-
   scenario 'user sees all comments for a job on its show page' do
     category = Category.create!(title: 'Technology')
     company  = Company.create!(name: 'ESPN')
