@@ -1,0 +1,28 @@
+<main>
+<br>
+<br>
+<br>
+<h1>Job Tracker</h1>
+<br>
+
+<aside>
+<div class='top-companies'>
+  <h3>Top Companies by Interest</h3>
+  <ul class='top-by-interest'>
+    <% @companies_grouped_with_avg_interest_lvl.each do |company_info| %>
+    <li><%= company_info.first %> (<%=company_info.last%>)</li>
+    <% end %>
+  </ul>
+</div>
+<br>
+
+<div class='top-jobs'>
+  <h3>Jobs by Interest</h3>
+  <ul class='top-by-interest'>
+    <% @jobs_grouped_by_interest_level.each do |job_info| %>
+    <li><%= job_info.first.first %> (<%= job_info.last %>)</li>
+    <% end %>
+  </ul>
+</div>
+</aside>
+</main>

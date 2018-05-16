@@ -49,16 +49,16 @@ The rubric below describes additional functionality that you will need to add to
 
 ### Company Contacts
 
-* [ ] When the user visits the page for a specific Company, in addition to information about the company there is a form that allows them to enter a Contact for that Company (e.g. “Penelope Santorini”, “Hiring Manager”, “penelope@wooo.com”).
-* [ ] Each Contact has a full name, position, email, and company (which relates to the company you’ve already created). It should be possible for a Company to have more than one Contact, but a Contact only works at one Company.
-* [ ] When the user submits a new contact, they are redirected back to the page for that specific company and the contact appears on the page.
+* [x] When the user visits the page for a specific Company, in addition to information about the company there is a form that allows them to enter a Contact for that Company (e.g. “Penelope Santorini”, “Hiring Manager”, “penelope@wooo.com”).
+* [x] Each Contact has a full name, position, email, and company (which relates to the company you’ve already created). It should be possible for a Company to have more than one Contact, but a Contact only works at one Company.
+* [x] When the user submits a new contact, they are redirected back to the page for that specific company and the contact appears on the page.
 
 ### Analysis
 
-* [ ] The user can visit `/jobs?sort=location` to view a list of the jobs sorted by `city`.
-* [ ] The user can visit `/dashboard` to see
-  * [ ] A count of jobs by `level_of_interest`
-  * [ ] The top three companies ranked by average level of interest along with their respective average level of interest.
+* [x] The user can visit `/jobs?sort=location` to view a list of the jobs sorted by `city`.
+* [x] The user can visit `/dashboard` to see
+  * [x] A count of jobs by `level_of_interest`
+  * [x] The top three companies ranked by average level of interest along with their respective average level of interest.
   * [ ] A count of jobs by `location` with a link to visit a page with jobs only in that location. The url should be `/jobs?location=Denver`.
 * [ ] The user can visit `/jobs?sort=interest` to view a list of the jobs sorted by `level_of_interest`.
 
