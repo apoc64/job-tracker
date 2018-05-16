@@ -1,6 +1,10 @@
 <header>
+  <% if @company %>
   <h1>All Jobs for <%= @company.name %></h1>
   <%= link_to "add a new job", new_company_job_path(@company) %>
+  <% else %>
+  <h1>All Jobs for <%= @city %></h1>
+  <% end %>
 </header>
 
 <main>
@@ -18,9 +22,9 @@
   <tbody>
     <% @jobs.each do |job| %>
     <tr class=job_<%= job.id %>>
-      <td class: 'table-button'><%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(@company, job) %></td>
-      <td class: 'table-button'><%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(@company, job), method: "delete" %></td>
-      <td><%= link_to job.title, company_job_path(@company, job) %></td>
+      <td class: 'table-button'><%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_company_job_path(job.company, job) %></td>
+      <td class: 'table-button'><%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), company_job_path(job.company, job), method: "delete" %></td>
+      <td><%= link_to job.title, company_job_path(job.company, job) %></td>
       <td><p><%= job.company.name %></p></td>
       <td><p><%= job.city %></p></td>
       <td><p><%= job.level_of_interest %></p></td>
