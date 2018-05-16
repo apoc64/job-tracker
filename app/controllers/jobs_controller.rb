@@ -12,9 +12,15 @@ class JobsController < ApplicationController
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
     @categories = Category.all
+    @companies = Company.all
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+    else
+      # binding.pry
+      @category = Category.find(params[:category_id])
+    end
+    @job = Job.new()
   end
 
   def create
@@ -40,6 +46,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @categories = Category.all
+    @companies = Company.all
   end
 
   def update

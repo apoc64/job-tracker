@@ -19,7 +19,7 @@ describe 'User visits a category page' do
 
     click_link 'Create a new job'
 
-    expect(current_path).to eq(new_category_job_path)
+    expect(current_path).to eq(new_category_job_path(category))
   end
 end
 
