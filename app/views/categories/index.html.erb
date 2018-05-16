@@ -9,7 +9,8 @@
     <tr>
       <th></th>
       <th></th>
-      <th>Title</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +18,8 @@
     <tr class=category_<%= category.id %>>
       <td class="table-button"><%= link_to image_tag('1208-file-type-pencil-toolbar@2x.svg', alt: "Edit"), edit_category_path(category) %></td>
       <td class="table-button"><%= link_to image_tag('1224-basket-delete-toolbar@2x.svg', alt: "Delete"), category_path(category), method: "delete" %></td>
-      <td><%= link_to category.title, category_path(category) %></td>
+      <td><%= category.title %></td>
+      <td><%= link_to "#{category.jobs.count} jobs", category_path(category) %></td>
     </tr>
     <% end %>
   </tbody>
