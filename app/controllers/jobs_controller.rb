@@ -16,20 +16,21 @@ class JobsController < ApplicationController
     @companies = Company.all
     if params[:company_id]
       @company = Company.find(params[:company_id])
+      parent = @company
     else
       @category = Category.find(params[:category_id])
+      parent = @category
     end
-    @job = Job.new()
+    @job = parent.jobs.new()
   end
 
   def create
-    # binding.pry
     if params[:company_id]
       parent = Company.find(params[:company_id])
     else
       parent = Category.find(params[:category_id])
     end
-    job = parent.jobs.new(job_params)
+    job = Job.new(job_params)
     if job.save
       flash[:success] = "You created #{job.title}"
       if params[:company_id]
